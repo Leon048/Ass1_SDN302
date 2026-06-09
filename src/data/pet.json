@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "707f1f77bcf86cd799439011"
     },
+=======
+    "_id": "707f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "owner_id": "607f1f77bcf86cd799439011",
     "name": "Fluffy",
     "breed": "Persian Cat",
@@ -17,9 +21,13 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "707f1f77bcf86cd799439012"
     },
+=======
+    "_id": "707f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "owner_id": "607f1f77bcf86cd799439011",
     "name": "Buddy",
     "breed": "Golden Retriever",

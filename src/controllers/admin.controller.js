@@ -4,6 +4,9 @@ const Appointment = require("../models/Appointment");
 const Invoice = require("../models/Invoice");
 const bcrypt = require("bcryptjs");
 
+// ===== USERS =====
+
+// GET /api/admin/users - Get all users
 exports.getAllUsers = async (req, res) => {
   try {
     const { role, is_active } = req.query;
@@ -27,49 +30,37 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+// POST /api/admin/users - Create user (doctor or admin)
 exports.createUser = async (req, res) => {
   try {
-    const {
-      email,
-      password,
-      full_name,
-      phone,
-      role,
-      owner_profile,
-      doctor_profile,
-    } = req.body;
+    const { email, password, full_name, phone, role, doctor_profile } =
+      req.body;
 
     if (!email || !password || !role) {
-      return res.status(400).json({
-        message: "email, password and role are required",
-      });
+      return res
+        .status(400)
+        .json({ message: "email, password, and role are required" });
+    }
+
+    if (!["admin", "doctor"].includes(role)) {
+      return res.status(400).json({ message: "Role must be admin or doctor" });
     }
 
     const existingUser = await User.findOne({ email });
-
     if (existingUser) {
-      return res.status(400).json({
-        message: "User already exists",
-      });
+      return res.status(400).json({ message: "User already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const userData = {
+    const user = new User({
       email,
       password_hash: hashedPassword,
       full_name,
       phone,
       role,
-    };
-
-    if (role === "owner") {
-      userData.owner_profile = owner_profile;
-    } else if (role === "doctor") {
-      userData.doctor_profile = doctor_profile;
-    }
-
-    const user = new User(userData);
+      doctor_profile: role === "doctor" ? doctor_profile : undefined,
+    });
 
     await user.save();
 
@@ -78,20 +69,18 @@ exports.createUser = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Error creating user",
-      error: error.message,
-    });
+    res
+      .status(500)
+      .json({ message: "Error creating user", error: error.message });
   }
 };
 
+// GET /api/admin/users/:id - Get user by id
 exports.getUserById = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log("ID nhận được:", id);
-    console.log("Độ dài:", id?.length);
-
-    const user = await User.findById(id).select("-password_hash ");
+    const user = await User.findById(req.params.id).select(
+      "-password_hash -refresh_token",
+    );
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });

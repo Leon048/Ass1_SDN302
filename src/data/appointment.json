@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "807f1f77bcf86cd799439011"
     },
+=======
+    "_id": "807f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "pet_id": "707f1f77bcf86cd799439011",
     "owner_id": "607f1f77bcf86cd799439011",
     "doctor_id": "607f1f77bcf86cd799439012",
@@ -19,9 +23,13 @@
     "updated_at": "2024-01-15T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "807f1f77bcf86cd799439012"
     },
+=======
+    "_id": "807f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "pet_id": "707f1f77bcf86cd799439012",
     "owner_id": "607f1f77bcf86cd799439011",
     "doctor_id": "607f1f77bcf86cd799439012",

@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "a07f1f77bcf86cd799439011"
     },
+=======
+    "_id": "a07f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "appointment_id": "807f1f77bcf86cd799439011",
     "owner_id": "607f1f77bcf86cd799439011",
     "amount": 50,
@@ -15,9 +19,13 @@
     "updated_at": "2024-02-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "a07f1f77bcf86cd799439012"
     },
+=======
+    "_id": "a07f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "appointment_id": "807f1f77bcf86cd799439012",
     "owner_id": "607f1f77bcf86cd799439011",
     "amount": 75,

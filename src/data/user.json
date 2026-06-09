@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "607f1f77bcf86cd799439011"
     },
+=======
+    "_id": "607f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "email": "owner1@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "owner",
@@ -18,9 +22,13 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "607f1f77bcf86cd799439012"
     },
+=======
+    "_id": "607f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "email": "doctor1@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "doctor",
@@ -46,9 +54,13 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "607f1f77bcf86cd799439013"
     },
+=======
+    "_id": "607f1f77bcf86cd799439013",
+>>>>>>> 379b9de (init vaccination feature)
     "email": "admin@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "admin",

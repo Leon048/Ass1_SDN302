@@ -16,7 +16,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "dev": "nodemon src/server.js"
+=======
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+>>>>>>> 379b9de (init vaccination feature)
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

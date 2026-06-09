@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -6,30 +6,33 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
   },
   password_hash: {
     type: String,
-    required: true
+    required: true,
   },
   role: {
     type: String,
-    enum: ['admin', 'doctor', 'owner'],
-    required: true
+    enum: ["admin", "doctor", "owner"],
+    required: true,
   },
   full_name: String,
   phone: String,
   avatar_url: String,
   is_active: {
     type: Boolean,
-    default: true
+    default: true,
   },
+  refresh_token: String,
 
+  // Owner profile
   owner_profile: {
     address: String,
-    emergency_contact: String
+    emergency_contact: String,
   },
 
+  // Doctor profile
   doctor_profile: {
     license_number: String,
     specialization: String,
@@ -41,21 +44,21 @@ const userSchema = new mongoose.Schema({
       thu: { start: String, end: String },
       fri: { start: String, end: String },
       sat: { start: String, end: String },
-      sun: { start: String, end: String }
-    }
+      sun: { start: String, end: String },
+    },
   },
 
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   updated_at: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Indexes
 userSchema.index({ role: 1 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

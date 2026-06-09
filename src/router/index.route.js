@@ -1,21 +1,20 @@
-const express = require('express');
-const homepageRoutes = require('../routes/homepage.routes');
-const petRoutes = require('../routes/pet.routes');
-const appointmentRoutes = require('../routes/appointment.routes');
-const doctorRoutes = require('../routes/doctor.routes');
-const adminRoutes = require('../routes/admin.routes');
-const notificationRoutes = require('../routes/notification.routes');
-const medicineRoutes = require('../routes/medicine.routes');
+const express = require("express");
+const homepageRoutes = require("../routes/homepage.routes");
+const petRoutes = require("../routes/pet.routes");
+const appointmentRoutes = require("../routes/appointment.routes");
+const doctorRoutes = require("../routes/doctor.routes");
+const adminRoutes = require("../routes/admin.routes");
+const notificationRoutes = require("../routes/notification.routes");
+const vaccineRoutes = require("../routes/vaccinationRoutes");
 
 const router = express.Router();
 
 // Public routes
-router.use('/homepage', homepageRoutes);
-router.use('/pets', petRoutes);
-router.use('/appointments', appointmentRoutes);
-router.use('/doctor', doctorRoutes);
-router.use('/admin', adminRoutes);
-router.use('/notifications', notificationRoutes);
-router.use('/medicines', medicineRoutes);
-
+router.use("/homepage", homepageRoutes);
+router.use("/pets", petRoutes);
+router.use("/appointments", appointmentRoutes);
+router.use("/doctor", doctorRoutes);
+router.use("/admin", adminRoutes);
+router.use("/notifications", notificationRoutes);
+router.use("/vaccines", vaccineRoutes);
 module.exports = router;

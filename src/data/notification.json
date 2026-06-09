@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "c07f1f77bcf86cd799439011"
     },
+=======
+    "_id": "c07f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "user_id": "607f1f77bcf86cd799439011",
     "title": "Appointment Confirmed",
     "body": "Your appointment has been confirmed for 2024-02-01",
@@ -13,9 +17,13 @@
     "created_at": "2024-02-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "c07f1f77bcf86cd799439012"
     },
+=======
+    "_id": "c07f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "user_id": "607f1f77bcf86cd799439011",
     "title": "Appointment Reminder",
     "body": "You have an appointment tomorrow at 10:00 AM",
@@ -26,9 +34,13 @@
     "created_at": "2024-01-31T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "c07f1f77bcf86cd799439013"
     },
+=======
+    "_id": "c07f1f77bcf86cd799439013",
+>>>>>>> 379b9de (init vaccination feature)
     "user_id": "607f1f77bcf86cd799439011",
     "title": "Invoice Created",
     "body": "New invoice has been created for your appointment",

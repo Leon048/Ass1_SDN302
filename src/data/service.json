@@ -1,8 +1,12 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "507f1f77bcf86cd799439011"
     },
+=======
+    "_id": "507f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "name": "Checkup",
     "description": "Pet health checkup",
     "price": 50,
@@ -14,9 +18,13 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "507f1f77bcf86cd799439012"
     },
+=======
+    "_id": "507f1f77bcf86cd799439012",
+>>>>>>> 379b9de (init vaccination feature)
     "name": "Vaccination",
     "description": "Pet vaccination",
     "price": 75,

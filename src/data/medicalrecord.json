@@ -1,12 +1,17 @@
 [
   {
+<<<<<<< HEAD
     "_id": {
       "$oid": "907f1f77bcf86cd799439011"
     },
+=======
+    "_id": "907f1f77bcf86cd799439011",
+>>>>>>> 379b9de (init vaccination feature)
     "appointment_id": "807f1f77bcf86cd799439011",
     "pet_id": "707f1f77bcf86cd799439011",
     "doctor_id": "607f1f77bcf86cd799439012",
     "diagnosis": "Healthy with minor allergies",
+<<<<<<< HEAD
     "treatment": "Prescribed antihistamines and vitamins",
     "symptoms": ["scratching", "redness"],
     "medicines": [
@@ -37,6 +42,16 @@
         "dosage": "1 tablet daily",
         "duration_days": 30,
         "notes": "Support immune system"
+=======
+    "treatment": "Prescribed antihistamines",
+    "symptoms": ["scratching", "redness"],
+    "prescriptions": [
+      {
+        "medicine_name": "Antihistamine",
+        "dosage": "10mg twice daily",
+        "duration_days": 14,
+        "notes": "Give with food"
+>>>>>>> 379b9de (init vaccination feature)
       }
     ],
     "lab_results": [
