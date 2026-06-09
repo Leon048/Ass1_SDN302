@@ -27,9 +27,6 @@ exports.getDoctorAppointments = async (req, res) => {
     }
 
     const appointments = await Appointment.find(query)
-      .populate('pet_id')
-      .populate('owner_id')
-      .populate('service_id')
       .sort({ scheduled_at: 1 });
 
     res.status(200).json({
