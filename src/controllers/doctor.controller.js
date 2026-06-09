@@ -27,9 +27,6 @@ exports.getDoctorAppointments = async (req, res) => {
     }
 
     const appointments = await Appointment.find(query)
-      .populate('pet_id')
-      .populate('owner_id')
-      .populate('service_id')
       .sort({ scheduled_at: 1 });
 
     res.status(200).json({
@@ -114,8 +111,7 @@ exports.createMedicalRecord = async (req, res) => {
 exports.getPetMedicalRecords = async (req, res) => {
   try {
     const records = await MedicalRecord.find({ pet_id: req.params.petId })
-      .populate('doctor_id')
-      .populate('pet_id')
+
       .sort({ created_at: -1 });
 
     res.status(200).json({
@@ -193,8 +189,7 @@ exports.createVaccination = async (req, res) => {
 exports.getPetVaccinations = async (req, res) => {
   try {
     const vaccinations = await Vaccination.find({ pet_id: req.params.petId })
-      .populate('doctor_id')
-      .populate('pet_id')
+
       .sort({ administered_date: -1 });
 
     res.status(200).json({

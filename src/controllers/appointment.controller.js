@@ -72,8 +72,7 @@ exports.getAppointments = async (req, res) => {
     }
 
     const appointments = await Appointment.find(query)
-      .populate('pet_id')
-      .populate('service_id')
+
       .sort({ scheduled_at: -1 });
 
     res.status(200).json({
@@ -89,10 +88,7 @@ exports.getAppointments = async (req, res) => {
 exports.getAppointmentById = async (req, res) => {
   try {
     const appointment = await Appointment.findById(req.params.id)
-      .populate('pet_id')
-      .populate('service_id')
-      .populate('owner_id')
-      .populate('doctor_id');
+
 
     if (!appointment) {
       return res.status(404).json({ message: 'Appointment not found' });
