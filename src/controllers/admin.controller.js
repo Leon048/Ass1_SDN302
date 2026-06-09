@@ -29,34 +29,47 @@ exports.getAllUsers = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    const { email, password, full_name, phone, role, doctor_profile } =
-      req.body;
+    const {
+      email,
+      password,
+      full_name,
+      phone,
+      role,
+      owner_profile,
+      doctor_profile,
+    } = req.body;
 
     if (!email || !password || !role) {
-      return res
-        .status(400)
-        .json({ message: "email, password, and role are required" });
-    }
-
-    if (!["admin", "doctor"].includes(role)) {
-      return res.status(400).json({ message: "Role must be admin or doctor" });
+      return res.status(400).json({
+        message: "email, password and role are required",
+      });
     }
 
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({
+        message: "User already exists",
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({
+    const userData = {
       email,
       password_hash: hashedPassword,
       full_name,
       phone,
       role,
-      doctor_profile: role === "doctor" ? doctor_profile : undefined,
-    });
+    };
+
+    if (role === "owner") {
+      userData.owner_profile = owner_profile;
+    } else if (role === "doctor") {
+      userData.doctor_profile = doctor_profile;
+    }
+
+    const user = new User(userData);
 
     await user.save();
 
@@ -65,9 +78,10 @@ exports.createUser = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error creating user", error: error.message });
+    res.status(500).json({
+      message: "Error creating user",
+      error: error.message,
+    });
   }
 };
 
@@ -560,12 +574,10 @@ exports.getAppointmentStats = async (req, res) => {
       data: stats,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error retrieving appointment statistics",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error retrieving appointment statistics",
+      error: error.message,
+    });
   }
 };
 
@@ -597,12 +609,10 @@ exports.getRevenueStats = async (req, res) => {
       data: revenue,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error retrieving revenue statistics",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error retrieving revenue statistics",
+      error: error.message,
+    });
   }
 };
 
@@ -668,11 +678,9 @@ exports.getDoctorStats = async (req, res) => {
       data: doctorStats,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error retrieving doctor statistics",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error retrieving doctor statistics",
+      error: error.message,
+    });
   }
 };

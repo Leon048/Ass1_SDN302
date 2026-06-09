@@ -1,6 +1,8 @@
 [
   {
-    "_id": "607f1f77bcf86cd799439011",
+    "_id": {
+      "$oid": "607f1f77bcf86cd799439011"
+    },
     "email": "owner1@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "owner",
@@ -16,7 +18,9 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
-    "_id": "607f1f77bcf86cd799439012",
+    "_id": {
+      "$oid": "607f1f77bcf86cd799439012"
+    },
     "email": "doctor1@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "doctor",
@@ -42,7 +46,9 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
-    "_id": "607f1f77bcf86cd799439013",
+    "_id": {
+      "$oid": "607f1f77bcf86cd799439013"
+    },
     "email": "admin@example.com",
     "password_hash": "$2a$10$salt.hash.example",
     "role": "admin",
