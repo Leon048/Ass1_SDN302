@@ -1,6 +1,8 @@
 [
   {
-    "_id": "907f1f77bcf86cd799439011",
+    "_id": {
+      "$oid": "907f1f77bcf86cd799439011"
+    },
     "appointment_id": "807f1f77bcf86cd799439011",
     "pet_id": "707f1f77bcf86cd799439011",
     "doctor_id": "607f1f77bcf86cd799439012",
