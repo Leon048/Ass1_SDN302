@@ -19,6 +19,19 @@ const medicalRecordSchema = new mongoose.Schema({
   treatment: String,
   symptoms: [String],
   
+  medicines: [
+    {
+      medicine_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Medicine'
+      },
+      medicine_name: String,
+      dosage: String,
+      duration_days: Number,
+      notes: String
+    }
+  ],
+
   prescriptions: [
     {
       medicine_name: String,
