@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "907f1f77bcf86cd799439011",
+    "appointment_id": "807f1f77bcf86cd799439011",
+    "pet_id": "707f1f77bcf86cd799439011",
+    "doctor_id": "607f1f77bcf86cd799439012",
+    "diagnosis": "Healthy with minor allergies",
+    "treatment": "Prescribed antihistamines",
+    "symptoms": ["scratching", "redness"],
+    "prescriptions": [
+      {
+        "medicine_name": "Antihistamine",
+        "dosage": "10mg twice daily",
+        "duration_days": 14,
+        "notes": "Give with food"
+      }
+    ],
+    "lab_results": [
+      {
+        "test_name": "Blood Test",
+        "result": "Normal",
+        "unit": "mg/dL",
+        "reference_range": "50-100",
+        "is_abnormal": false
+      }
+    ],
+    "attachments": [],
+    "follow_up_date": "2024-03-01T00:00:00Z",
+    "created_at": "2024-02-01T00:00:00Z",
+    "updated_at": "2024-02-01T00:00:00Z"
+  }
+]

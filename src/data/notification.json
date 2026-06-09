@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "c07f1f77bcf86cd799439011",
+    "user_id": "607f1f77bcf86cd799439011",
+    "title": "Appointment Confirmed",
+    "body": "Your appointment has been confirmed for 2024-02-01",
+    "type": "appointment_confirmed",
+    "ref_id": "807f1f77bcf86cd799439011",
+    "ref_type": "appointment",
+    "is_read": false,
+    "created_at": "2024-02-01T00:00:00Z"
+  },
+  {
+    "_id": "c07f1f77bcf86cd799439012",
+    "user_id": "607f1f77bcf86cd799439011",
+    "title": "Appointment Reminder",
+    "body": "You have an appointment tomorrow at 10:00 AM",
+    "type": "appointment_reminder",
+    "ref_id": "807f1f77bcf86cd799439011",
+    "ref_type": "appointment",
+    "is_read": true,
+    "created_at": "2024-01-31T00:00:00Z"
+  },
+  {
+    "_id": "c07f1f77bcf86cd799439013",
+    "user_id": "607f1f77bcf86cd799439011",
+    "title": "Invoice Created",
+    "body": "New invoice has been created for your appointment",
+    "type": "invoice_created",
+    "ref_id": "a07f1f77bcf86cd799439011",
+    "ref_type": "invoice",
+    "is_read": false,
+    "created_at": "2024-02-01T00:00:00Z"
+  }
+]

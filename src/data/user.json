@@ -1,0 +1,55 @@
+[
+  {
+    "_id": "607f1f77bcf86cd799439011",
+    "email": "owner1@example.com",
+    "password_hash": "$2a$10$salt.hash.example",
+    "role": "owner",
+    "full_name": "John Doe",
+    "phone": "0123456789",
+    "avatar_url": "https://example.com/avatar1.jpg",
+    "is_active": true,
+    "owner_profile": {
+      "address": "123 Main St",
+      "emergency_contact": "0987654321"
+    },
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "_id": "607f1f77bcf86cd799439012",
+    "email": "doctor1@example.com",
+    "password_hash": "$2a$10$salt.hash.example",
+    "role": "doctor",
+    "full_name": "Dr. Jane Smith",
+    "phone": "0123456789",
+    "avatar_url": "https://example.com/avatar2.jpg",
+    "is_active": true,
+    "doctor_profile": {
+      "license_number": "LIC123456",
+      "specialization": "General Surgery",
+      "bio": "Experienced veterinarian",
+      "working_hours": {
+        "mon": { "start": "09:00", "end": "17:00" },
+        "tue": { "start": "09:00", "end": "17:00" },
+        "wed": { "start": "09:00", "end": "17:00" },
+        "thu": { "start": "09:00", "end": "17:00" },
+        "fri": { "start": "09:00", "end": "17:00" },
+        "sat": { "start": "10:00", "end": "14:00" },
+        "sun": { "start": "00:00", "end": "00:00" }
+      }
+    },
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "_id": "607f1f77bcf86cd799439013",
+    "email": "admin@example.com",
+    "password_hash": "$2a$10$salt.hash.example",
+    "role": "admin",
+    "full_name": "Admin",
+    "phone": "0123456789",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+]

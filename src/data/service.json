@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "507f1f77bcf86cd799439011",
+    "name": "Checkup",
+    "description": "Pet health checkup",
+    "price": 50,
+    "duration_minutes": 30,
+    "category": "checkup",
+    "image_url": "https://example.com/checkup.jpg",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439012",
+    "name": "Vaccination",
+    "description": "Pet vaccination",
+    "price": 75,
+    "duration_minutes": 20,
+    "category": "vaccination",
+    "image_url": "https://example.com/vaccination.jpg",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439013",
+    "name": "Grooming",
+    "description": "Pet grooming service",
+    "price": 100,
+    "duration_minutes": 60,
+    "category": "grooming",
+    "image_url": "https://example.com/grooming.jpg",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+]

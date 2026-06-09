@@ -1,0 +1,36 @@
+[
+  {
+    "_id": "807f1f77bcf86cd799439011",
+    "pet_id": "707f1f77bcf86cd799439011",
+    "owner_id": "607f1f77bcf86cd799439011",
+    "doctor_id": "607f1f77bcf86cd799439012",
+    "service_id": "507f1f77bcf86cd799439011",
+    "scheduled_at": "2024-02-01T10:00:00Z",
+    "status": "pending",
+    "notes": "Initial checkup",
+    "service_snapshot": {
+      "name": "Checkup",
+      "price": 50,
+      "duration_minutes": 30
+    },
+    "created_at": "2024-01-15T00:00:00Z",
+    "updated_at": "2024-01-15T00:00:00Z"
+  },
+  {
+    "_id": "807f1f77bcf86cd799439012",
+    "pet_id": "707f1f77bcf86cd799439012",
+    "owner_id": "607f1f77bcf86cd799439011",
+    "doctor_id": "607f1f77bcf86cd799439012",
+    "service_id": "507f1f77bcf86cd799439012",
+    "scheduled_at": "2024-02-05T14:00:00Z",
+    "status": "confirmed",
+    "notes": "Vaccination appointment",
+    "service_snapshot": {
+      "name": "Vaccination",
+      "price": 75,
+      "duration_minutes": 20
+    },
+    "created_at": "2024-01-16T00:00:00Z",
+    "updated_at": "2024-01-16T00:00:00Z"
+  }
+]

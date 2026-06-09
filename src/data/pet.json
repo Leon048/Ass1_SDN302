@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "707f1f77bcf86cd799439011",
+    "owner_id": "607f1f77bcf86cd799439011",
+    "name": "Fluffy",
+    "breed": "Persian Cat",
+    "dob": "2022-01-15T00:00:00Z",
+    "gender": "female",
+    "weight": 4.5,
+    "microchip_id": "MC123456789",
+    "avatar_url": "https://example.com/fluffy.jpg",
+    "notes": "Active and playful",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "_id": "707f1f77bcf86cd799439012",
+    "owner_id": "607f1f77bcf86cd799439011",
+    "name": "Buddy",
+    "breed": "Golden Retriever",
+    "dob": "2021-06-20T00:00:00Z",
+    "gender": "male",
+    "weight": 30,
+    "microchip_id": "MC987654321",
+    "avatar_url": "https://example.com/buddy.jpg",
+    "notes": "Friendly and loyal",
+    "is_active": true,
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+]
