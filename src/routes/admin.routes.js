@@ -51,8 +51,6 @@ router.get('/stats/appointments', adminController.getAppointmentStats);
 
 router.get('/stats/revenue', adminController.getRevenueStats);
 
-router.get('/stats/top-services', adminController.getTopServices);
-
 router.get('/stats/doctors', adminController.getDoctorStats);
 
 module.exports = router;
