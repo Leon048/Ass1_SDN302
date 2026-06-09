@@ -3,22 +3,32 @@
     "_id": {
       "$oid": "907f1f77bcf86cd799439011"
     },
-    "appointment_id": "807f1f77bcf86cd799439011",
-    "pet_id": "707f1f77bcf86cd799439011",
-    "doctor_id": "607f1f77bcf86cd799439012",
+    "appointment_id": {
+      "$oid": "807f1f77bcf86cd799439011"
+    },
+    "pet_id": {
+      "$oid": "707f1f77bcf86cd799439011"
+    },
+    "doctor_id": {
+      "$oid": "607f1f77bcf86cd799439012"
+    },
     "diagnosis": "Healthy with minor allergies",
     "treatment": "Prescribed antihistamines and vitamins",
     "symptoms": ["scratching", "redness"],
     "medicines": [
       {
-        "medicine_id": "d07f1f77bcf86cd799439014",
+        "medicine_id": {
+          "$oid": "d07f1f77bcf86cd799439014"
+        },
         "medicine_name": "Dexamethasone",
         "dosage": "0.5mg tablets",
         "duration_days": 7,
         "notes": "Take 1 tablet daily with food"
       },
       {
-        "medicine_id": "d07f1f77bcf86cd799439012",
+        "medicine_id": {
+          "$oid": "d07f1f77bcf86cd799439012"
+        },
         "medicine_name": "Pet Multivitamin",
         "dosage": "1 tablet daily",
         "duration_days": 30,

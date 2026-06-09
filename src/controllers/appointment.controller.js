@@ -51,7 +51,7 @@ exports.createAppointment = async (req, res) => {
 // GET /api/appointments - Get appointments
 exports.getAppointments = async (req, res) => {
   try {
-    const { owner_id, status, date } = req.query;
+    const { owner_id, status, date, pet_id } = req.query;
 
     let query = {};
 
@@ -61,6 +61,10 @@ exports.getAppointments = async (req, res) => {
 
     if (status) {
       query.status = status;
+    }
+
+    if (pet_id) {
+      query.pet_id = pet_id;
     }
 
     if (date) {

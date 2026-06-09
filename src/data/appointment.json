@@ -3,10 +3,18 @@
     "_id": {
       "$oid": "807f1f77bcf86cd799439011"
     },
-    "pet_id": "707f1f77bcf86cd799439011",
-    "owner_id": "607f1f77bcf86cd799439011",
-    "doctor_id": "607f1f77bcf86cd799439012",
-    "service_id": "507f1f77bcf86cd799439011",
+    "pet_id": {
+      "$oid": "707f1f77bcf86cd799439011"
+    },
+    "owner_id": {
+      "$oid": "607f1f77bcf86cd799439011"
+    },
+    "doctor_id": {
+      "$oid": "607f1f77bcf86cd799439012"
+    },
+    "service_id": {
+      "$oid": "507f1f77bcf86cd799439011"
+    },
     "scheduled_at": "2024-02-01T10:00:00Z",
     "status": "pending",
     "notes": "Initial checkup",
@@ -22,10 +30,18 @@
     "_id": {
       "$oid": "807f1f77bcf86cd799439012"
     },
-    "pet_id": "707f1f77bcf86cd799439012",
-    "owner_id": "607f1f77bcf86cd799439011",
-    "doctor_id": "607f1f77bcf86cd799439012",
-    "service_id": "507f1f77bcf86cd799439012",
+    "pet_id": {
+      "$oid": "707f1f77bcf86cd799439012"
+    },
+    "owner_id": {
+      "$oid": "607f1f77bcf86cd799439011"
+    },
+    "doctor_id": {
+      "$oid": "607f1f77bcf86cd799439012"
+    },
+    "service_id": {
+      "$oid": "507f1f77bcf86cd799439012"
+    },
     "scheduled_at": "2024-02-05T14:00:00Z",
     "status": "confirmed",
     "notes": "Vaccination appointment",
