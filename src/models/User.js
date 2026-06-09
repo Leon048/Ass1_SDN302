@@ -24,15 +24,12 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  refresh_token: String,
 
-  // Owner profile
   owner_profile: {
     address: String,
     emergency_contact: String
   },
 
-  // Doctor profile
   doctor_profile: {
     license_number: String,
     specialization: String,
