@@ -1,6 +1,8 @@
 [
   {
-    "_id": "d07f1f77bcf86cd799439011",
+    "_id": {
+      "$oid": "d07f1f77bcf86cd799439011"
+    },
     "name": "Amoxicillin",
     "description": "Broad-spectrum antibiotic for pets",
     "dosage": "250mg/5ml suspension",
@@ -17,7 +19,9 @@
     "updated_at": "2024-01-01T00:00:00Z"
   },
   {
-    "_id": "d07f1f77bcf86cd799439012",
+    "_id": {
+      "$oid": "d07f1f77bcf86cd799439012"
+    },
     "name": "Pet Multivitamin",
     "description": "Complete vitamin and mineral supplement",
     "dosage": "1 tablet daily",
@@ -32,7 +36,9 @@
     "is_active": true,
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z"
-  },
+  },{
+      "$oid": "d07f1f77bcf86cd799439013"
+    }
   {
     "_id": "d07f1f77bcf86cd799439013",
     "name": "Ibuprofen for Pets",
@@ -49,7 +55,9 @@
     "is_active": true,
     "created_at": "2024-01-01T00:00:00Z",
     "updated_at": "2024-01-01T00:00:00Z"
-  },
+  },{
+      "$oid": "d07f1f77bcf86cd799439014"
+    }
   {
     "_id": "d07f1f77bcf86cd799439014",
     "name": "Dexamethasone",
