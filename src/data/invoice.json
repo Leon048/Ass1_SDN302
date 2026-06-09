@@ -18,8 +18,8 @@
     "_id": {
       "$oid": "a07f1f77bcf86cd799439012"
     },
-    "appointment_id": "807f1f77bcf86cd799439012",
-    "owner_id": "607f1f77bcf86cd799439011",
+    "appointment_id": { "$oid": "807f1f77bcf86cd799439012" },
+    "owner_id": { "$oid": "607f1f77bcf86cd799439011" },
     "amount": 75,
     "discount": 5,
     "final_amount": 70,

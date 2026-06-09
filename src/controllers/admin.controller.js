@@ -3,6 +3,7 @@ const Service = require("../models/Service");
 const Appointment = require("../models/Appointment");
 const Invoice = require("../models/Invoice");
 const bcrypt = require("bcryptjs");
+const Pet = require("../models/Pet");
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -10,7 +11,7 @@ exports.getAllUsers = async (req, res) => {
 
     let query = {};
     if (role) query.role = role;
-    if (is_active !== undefined) query.is_active = is_active === "true";
+    if (is_active !== undefined) query.is_active = is_active === true;
 
     const users = await User.find(query).select(
       "-password_hash -refresh_token",
@@ -142,23 +143,50 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-// PATCH /api/admin/users/:id/role - Change user role
 exports.changeUserRole = async (req, res) => {
   try {
-    const { role } = req.body;
+    const { role, owner_profile, doctor_profile } = req.body;
 
     if (!role || !["admin", "doctor", "owner"].includes(role)) {
-      return res.status(400).json({ message: "Invalid role" });
+      return res.status(400).json({
+        message: "Invalid role",
+      });
     }
 
     const user = await User.findById(req.params.id);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    user.owner_profile = undefined;
+    user.doctor_profile = undefined;
+
+    if (role === "owner") {
+      if (!owner_profile) {
+        return res.status(400).json({
+          message: "owner_profile is required",
+        });
+      }
+
+      user.owner_profile = owner_profile;
+    }
+
+    if (role === "doctor") {
+      if (!doctor_profile) {
+        return res.status(400).json({
+          message: "doctor_profile is required",
+        });
+      }
+
+      user.doctor_profile = doctor_profile;
     }
 
     user.role = role;
-    user.updated_at = Date.now();
+    user.updated_at = new Date();
+
     await user.save();
 
     res.status(200).json({
@@ -166,9 +194,10 @@ exports.changeUserRole = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error updating user role", error: error.message });
+    res.status(500).json({
+      message: "Error updating user role",
+      error: error.message,
+    });
   }
 };
 
@@ -391,8 +420,8 @@ exports.getAllInvoices = async (req, res) => {
     }
 
     const invoices = await Invoice.find(query)
-      .populate("appointment_id")
-      .populate("owner_id")
+      .populate("appointment_id", "_id")
+      .populate("owner_id",)
       .sort({ created_at: -1 });
 
     res.status(200).json({
@@ -511,72 +540,62 @@ exports.updateInvoiceStatus = async (req, res) => {
 // GET /api/admin/stats/overview - Get overview stats
 exports.getOverviewStats = async (req, res) => {
   try {
-    const totalUsers = await User.countDocuments();
-    const totalPets = require("../models/Pet").countDocuments();
+    const totalUsers = await User.countDocuments({role: "owner"});
+    const totalDoctor = await User.countDocuments({role: "doctor"});
+    const totalPets = await Pet.countDocuments();
     const totalAppointments = await Appointment.countDocuments();
+
     const currentMonth = new Date();
     currentMonth.setDate(1);
-    const monthlyRevenue = await Invoice.aggregate([
-      {
-        $match: {
-          status: "paid",
-          created_at: { $gte: currentMonth },
-        },
-      },
-      {
-        $group: {
-          _id: null,
-          total: { $sum: "$final_amount" },
-        },
-      },
-    ]);
+    currentMonth.setHours(0, 0, 0, 0);
+
+    const invoices = await Invoice.find({
+      status: "paid",
+      created_at: { $gte: currentMonth },
+    });
+
+    console.log(invoices);
+
+    const monthlyRevenue = invoices.reduce(
+      (sum, invoice) => sum + invoice.final_amount,
+      0
+    );
 
     res.status(200).json({
-      message: "Overview statistics retrieved successfully",
       data: {
         totalUsers,
-        totalPets: await totalPets,
+        totalDoctor,
+        totalPets,
         totalAppointments,
-        monthlyRevenue: monthlyRevenue[0]?.total || 0,
+        monthlyRevenue,
       },
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error retrieving statistics", error: error.message });
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
 // GET /api/admin/stats/appointments - Get appointment stats
 exports.getAppointmentStats = async (req, res) => {
   try {
-    const { period } = req.query; // day, week, month
+    const appointments = await Appointment.find();
 
-    const stats = await Appointment.aggregate([
-      {
-        $group: {
-          _id: {
-            status: "$status",
-            date: {
-              $dateToString: { format: "%Y-%m-%d", date: "$scheduled_at" },
-            },
-          },
-          count: { $sum: 1 },
-        },
-      },
-      {
-        $sort: { "_id.date": -1 },
-      },
-    ]);
+    const stats = {};
+
+    appointments.forEach((appointment) => {
+      const status = appointment.status;
+
+      stats[status] = (stats[status] || 0) + 1;
+    });
 
     res.status(200).json({
-      message: "Appointment statistics retrieved successfully",
       data: stats,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving appointment statistics",
-      error: error.message,
+      message: error.message,
     });
   }
 };
@@ -586,101 +605,91 @@ exports.getRevenueStats = async (req, res) => {
   try {
     const { from, to } = req.query;
 
-    let query = { status: "paid" };
+    const query = {
+      status: "paid",
+    };
+
     if (from || to) {
       query.created_at = {};
+
       if (from) query.created_at.$gte = new Date(from);
       if (to) query.created_at.$lte = new Date(to);
     }
 
-    const revenue = await Invoice.aggregate([
-      { $match: query },
-      {
-        $group: {
-          _id: { $dateToString: { format: "%Y-%m-%d", date: "$created_at" } },
-          total: { $sum: "$final_amount" },
-        },
-      },
-      { $sort: { _id: -1 } },
-    ]);
+    const invoices = await Invoice.find(query);
+
+    const revenueMap = {};
+
+    invoices.forEach((invoice) => {
+      const date = invoice.created_at.toISOString().split("T")[0];
+
+      revenueMap[date] =
+        (revenueMap[date] || 0) + invoice.final_amount;
+    });
+
+    const result = Object.entries(revenueMap).map(
+      ([date, total]) => ({
+        date,
+        total,
+      })
+    );
 
     res.status(200).json({
-      message: "Revenue statistics retrieved successfully",
-      data: revenue,
+      data: result,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving revenue statistics",
-      error: error.message,
+      message: error.message,
     });
-  }
-};
-
-// GET /api/admin/stats/top-services - Get top services
-exports.getTopServices = async (req, res) => {
-  try {
-    const topServices = await Appointment.aggregate([
-      {
-        $group: {
-          _id: "$service_id",
-          count: { $sum: 1 },
-        },
-      },
-      { $sort: { count: -1 } },
-      { $limit: 10 },
-      {
-        $lookup: {
-          from: "services",
-          localField: "_id",
-          foreignField: "_id",
-          as: "service",
-        },
-      },
-    ]);
-
-    res.status(200).json({
-      message: "Top services retrieved successfully",
-      data: topServices,
-    });
-  } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error retrieving top services", error: error.message });
   }
 };
 
 // GET /api/admin/stats/doctors - Get doctor statistics
 exports.getDoctorStats = async (req, res) => {
   try {
-    const doctorStats = await Appointment.aggregate([
-      {
-        $group: {
-          _id: "$doctor_id",
-          appointmentCount: { $sum: 1 },
-          completedCount: {
-            $sum: { $cond: [{ $eq: ["$status", "done"] }, 1, 0] },
-          },
-        },
-      },
-      {
-        $lookup: {
-          from: "users",
-          localField: "_id",
-          foreignField: "_id",
-          as: "doctor",
-        },
-      },
-      { $sort: { appointmentCount: -1 } },
-    ]);
+    const appointments = await Appointment.find()
+      .populate(
+        "doctor_id",
+        "full_name email doctor_profile"
+      );
+
+    const doctorMap = {};
+
+    appointments.forEach((appointment) => {
+      const doctor = appointment.doctor_id;
+
+      if (!doctor) return;
+
+      const id = doctor._id.toString();
+
+      if (!doctorMap[id]) {
+        doctorMap[id] = {
+          doctor,
+          appointmentCount: 0,
+          completedCount: 0,
+        };
+      }
+
+      doctorMap[id].appointmentCount++;
+
+      if (appointment.status === "done") {
+        doctorMap[id].completedCount++;
+      }
+    });
+
+    const result = Object.values(doctorMap);
+
+    result.sort(
+      (a, b) =>
+        b.appointmentCount - a.appointmentCount
+    );
 
     res.status(200).json({
-      message: "Doctor statistics retrieved successfully",
-      data: doctorStats,
+      data: result,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving doctor statistics",
-      error: error.message,
+      message: error.message,
     });
   }
 };
